@@ -1,20 +1,41 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Image, Text, View, StyleSheet } from "react-native";
 import StylesText from "./StylesText.jsx";
 
 export default function RepoItem(props) {
     return (
-        <View key={props.id} style={{padding:20}}>
-            <StylesText >{props.id}</StylesText>
-            <StylesText fontSize='subheading' fontWeight='bold'>{props.title}</StylesText>
-            <View style={{backgroundColor: 'red',}}>
-                <StylesText  >{props.body}</StylesText>
+        <View key={props.id}>
+            <Image style={styles.image} source={{uri: props.ownerAvatarUrl}}/>
+            <View>
+                <StylesText>{props.fullName}</StylesText>
+                <StylesText>{props.description}</StylesText>
+                <StylesText>{props.language}</StylesText>
             </View>
-            <StylesText>Languege: {props.lang}</StylesText>
+            <View>
+                <StylesText>{props.forksCount}</StylesText>
+                <Text>Forks</Text>
+            </View>
+            <View>
+                <StylesText>{props.stargazerCount}</StylesText>
+                <Text>Stars</Text>
+            </View>
+            <View>
+                <StylesText>{props.ratingAverage}</StylesText>
+                <Text>Rate</Text>
+            </View>
+            <View>
+                <StylesText>{props.reviewCount}</StylesText>
+                <Text>Reviews</Text>
+            </View>
         </View>
     )
 }
 
 const styles = StyleSheet.create(
-    
+    {
+        image: {
+            height: 48,
+            width: 48
+        }
+    }
     )
